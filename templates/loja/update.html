@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Update{% endblock %}
+{% block conteudo %}
+<section class="flex justify-center items-center min-h-screen p-4">
+    <form action="{% url 'update' usuario.id %}" method="post" class="flex-col bg-white rounded shadow-lg">
+        {% csrf_token %}
+        <div class=" flex-col justify-around items-center p-2">
+          <input
+          type="text"
+          class="outline-none p-3 rounded shadow-lg m-2 text-blue-500 w-80"
+          name="nome"
+          placeholder="Digite um nome"
+          required value="{{ usuario.nome }}"
+          />
+          <input
+          type="text"
+          class="outline-none p-3 rounded shadow-lg m-2 text-blue-500 w-80"
+          name="idade"
+          placeholder="Digite sua idade"
+          required value="{{ usuario.idade }}"
+          />
+        </div>
+          <button
+          type="submit"
+          class="bg-purple-300 hover:bg-purple-400 duration-700 rounded text-white font-semibold p-2 px-16 shadow-lg outline-none flex mx-auto m-3"
+          >
+          Salvar
+        </button>
+      </form>
+</section>
+{% endblock %}

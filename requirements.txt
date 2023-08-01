@@ -1,0 +1,8 @@
+asgiref==3.7.2
+Django
+gunicorn
+packaging==23.1
+Pillow
+python-dotenv
+sqlparse==0.4.4
+tzdata==2023.3

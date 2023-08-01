@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Base{% endblock %}</title>
+    <link rel="shortcut icon" href="{% static 'img/python.png' %}" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <header class="flex">
+        <nav class="flex lg:justify-between justify-center items-center bg-white fixed p-3 shadow-md w-full h-16">
+            <a href="#">
+                <span class="flex gap-2 items-center">
+                    <img src="{% static 'img/python.png' %}" alt="python" class="w-12 h-12">
+                    <h2 class="font-semibold lg:text-blue-500 text-green-500">Loja virtual</h2>
+                </span>
+            </a>
+        </nav>
+    </header>
+    {% block conteudo %}
+
+    {% endblock %}
+    <footer class="bg-white w-full h-16 flex justify-center items-center">
+        <div>
+            <p class="text-green-500 animate-pulse">All rights reservd oliveira.js &copy; August 2023.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Home{% endblock %}
+{% block conteudo %}
+<section class="flex justify-center items-center min-h-screen p-4 pt-5">
+  <div class="flex-col justify-center items-center">
+    <form action="{% url 'create' %}" method="post" class="bg-yellow-200 rounded p-4">
+      {% csrf_token %}
+      <div class="">
+          <input
+          type="text"
+        class="outline-none p-2 rounded shadow-lg m-1 bg-white w-80 mt-2 text-blue-500"
+        name="nome"
+        placeholder="Digite um nome"
+        required autocomplete="off"
+        />
+        <input
+        type="text"
+        class="outline-none p-2 rounded shadow-lg bg-white w-80 mt-2 text-blue-500"
+        name="idade"
+        placeholder="Digite sua idade"
+        required autocomplete="off"
+        />
+    </div>
+      <button
+        type="submit"
+        class="bg-blue-300 hover:bg-blue-400 duration-700 rounded text-white font-semibold px-20 p-2 flex mx-auto mt-4 shadow-lg"
+      >
+        Adicionar
+      </button>
+    </form>
+    {% for usuario in usuarios %}
+    <ul class="flex justify-around mt-5 mb-5 gap-2 flex-wrap bg-yellow-200 p-5 rounded shadow-lg">
+      <li class="text-white">
+        <div class="bg-purple-400 w-full p-2 px-10 rounded">
+            # {{ usuario.id }} - {{ usuario.nome }} - {{ usuario.idade }}
+        </div>
+      </li>
+      <li>
+        <button
+          type="button"
+          class="bg-green-300 hover:bg-green-400 duration-700 text-white font-semibold shadow-md rounded px-14 p-1"
+        >
+          <a href="{% url 'update' usuario.id %}">Editar</a>
+        </button>
+      </li>
+      <li>
+        <button
+          type="button"
+          class="bg-red-300 hover:bg-red-400 duration-700 text-white font-semibold shadow-md rounded px-14 p-1 outline-none"
+        >
+          <a href="{% url 'delete' usuario.id %}">Excluir</a>
+        </button>
+      </li>
+    </ul>
+    {% endfor%}
+  </div>
+</section>
+{% endblock %}
